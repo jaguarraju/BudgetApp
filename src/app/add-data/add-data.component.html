@@ -1,0 +1,33 @@
+<form class="dataForm" (ngSubmit)="onSubmit()">
+<mat-form-field appearance="fill" class="fill-width">
+    <mat-label>Transaction Type</mat-label>
+    <mat-select [(ngModel)]="transactionTypeInput" name="transactionTypeInput">
+      <mat-option *ngFor="let transactionType of transactionTypes" [value]="transactionType.value">
+        {{transactionType.text}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fill-width">
+    <mat-label>Transaction Amount</mat-label>
+    <input type="number" step=".01" matInput [(ngModel)]="transactionAmountInput" name="transactionAmountInput" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fill-width">
+    <mat-label>Transaction Date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="transactionDateInput" name="transactionDateInput" [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="fill-width">
+    <mat-label>Transaction Comment</mat-label>
+    <textarea matInput [(ngModel)]="transactionCommentInput" name="transactionCommentInput"></textarea>
+  </mat-form-field>
+  
+  <button type="submit" mat-fab>
+    <mat-icon>save</mat-icon>
+  </button>
+  &nbsp;
+  <button type="reset" mat-fab>
+    <mat-icon>highlight_off</mat-icon>
+  </button>
+</form>
+

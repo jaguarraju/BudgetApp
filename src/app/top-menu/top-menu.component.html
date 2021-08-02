@@ -1,0 +1,13 @@
+<div class="toolbar" role="banner">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item *ngFor="let menuitem of menuList" href="{{menuitem.path}}">
+      <mat-icon>{{menuitem.icon}}</mat-icon>
+      <span>{{menuitem.text}}</span>
+    </a>
+  </mat-menu>
+  <div class="spacer"></div>
+  <span>{{ appData.ApplicationTitle }}</span>
+</div>

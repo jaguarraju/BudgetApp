@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-4">
+    <mat-form-field appearance="fill" class="fill-width">
+      <mat-label>Total Income</mat-label>
+      <h2><mat-icon>add</mat-icon><mat-icon> attach_money</mat-icon>{{totalIncome}}</h2>
+      <input style="visibility: hidden;" type="number" step="1" matInput [(ngModel)]="totalIncome" name="totalIncome" />
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field appearance="fill" class="fill-width">
+      <mat-label>Total Spendings</mat-label>
+      <h2><mat-icon>remove</mat-icon><mat-icon> attach_money</mat-icon>{{totalSpending}}</h2>
+      <input style="visibility: hidden;" type="number" step="1" matInput [(ngModel)]="totalSpending" name="totalSpending" />
+    </mat-form-field>
+  </div>
+  <div class="col-4">
+    <mat-form-field appearance="fill" class="fill-width">
+      <mat-label>Remaining Balance</mat-label>
+      <h2><mat-icon>{{signRemainingBalance}}</mat-icon><mat-icon> attach_money</mat-icon>{{totalRemainingBalance}}</h2>
+      <input style="visibility: hidden;" type="number" step="1" matInput [(ngModel)]="totalRemainingBalance" name="totalRemainingBalance" />
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <form class="dataForm" (ngSubmit)="onSubmitAnalzyse()">
+        <mat-form-field appearance="fill" class="fill-width">
+          <mat-label>Analyze Month</mat-label>
+          <input type="number" step="1" matInput [(ngModel)]="analyzeMonthInput" name="analyzeMonthInput" />
+        </mat-form-field>
+
+
+        <button type="submit" mat-fab>
+          <mat-icon>refresh</mat-icon>
+        </button>
+        &nbsp;
+        <button type="reset" mat-fab>
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+      </form>
+  </div>
+  <div class="col-6">
+    <form class="dataForm" (ngSubmit)="onSubmitForecast()">
+
+        <mat-form-field appearance="fill" class="fill-width">
+          <mat-label>Forecast Month</mat-label>
+          <input type="number" step="1" matInput [(ngModel)]="forecastMonthInput" name="forecastMonthInput" />
+        </mat-form-field>
+
+        <button type="submit" mat-fab>
+          <mat-icon>refresh</mat-icon>
+        </button>
+        &nbsp;
+        <button type="reset" mat-fab>
+          <mat-icon>highlight_off</mat-icon>
+        </button>
+      </form>
+  </div>
+</div>
+<div class="row">
+    <div class="col-6">
+      <h1>Financial Report</h1>
+      <div style="display: block;">
+        <canvas baseChart width="400" height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+      
+      
+  </div>
+  <div class="col-6">
+  <h1>Financial Forecast</h1>
+    <div style="display: block;">
+      <canvas baseChart width="400" height="400"
+        [datasets]="lineChartDataForecast"
+        [labels]="lineChartLabelsForecast"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+</div>
+  </div>
